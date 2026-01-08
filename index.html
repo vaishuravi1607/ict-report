@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laporan Kerosakan ICT</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#e9ecef;
+  margin:0;
+  padding:0;
+}
+
+.container{
+  max-width:900px;
+  background:#ffffff;
+  margin:30px auto;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+h2, h3{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.section{
+  border:1px solid #000;
+  padding:15px;
+  margin-top:20px;
+  border-radius:6px;
+}
+
+.row{
+  display:flex;
+  gap:20px;
+}
+
+.row div{
+  flex:1;
+}
+
+label{
+  display:block;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+input, textarea{
+  width:100%;
+  padding:8px;
+  margin-top:5px;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+
+textarea{
+  resize:vertical;
+}
+
+button{
+  margin-top:30px;
+  width:100%;
+  padding:14px;
+  background: linear-gradient(135deg, #003366, #0059b3);
+  color:white;
+  border:none;
+  font-size:16px;
+  font-weight:bold;
+  border-radius:8px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HIDDEN IFRAME -->
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<div class="container">
+  <h2>LAPORAN KEROSAKAN</h2>
+  <h3>PERALATAN ICT PDRM KONTINJEN PERAK</h3>
+
+  <form
+  action="https://docs.google.com/forms/d/e/1FAIpQLSdKWZr7yIRhzAPXbxFhHlY4GRI2DcdNCvCgnIKG-iQwlsnuQA/formResponse"
+  method="POST"
+  target="hidden_iframe"
+  onsubmit="submitted=true; setDate();">
+
+
+    <!-- BUTIR-BUTIR PENGGUNA -->
+    <div class="section">
+      <h3>BUTIR-BUTIR PENGGUNA</h3>
+
+      <div class="row">
+        <div>
+          <label>PKT / No / Nama</label>
+          <input type="text" name="entry.1417135376" required>
+        </div>
+        <div>
+          <label>Tarikh</label>
+          <input type="date" id="tarikh" name="entry.901421394" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Jabatan / IPD / Balai</label>
+          <input type="text" name="entry.1506835743" required>
+        </div>
+        <div>
+          <label>No Telefon</label>
+          <input type="text" name="entry.1089605989" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUTIR-BUTIR PERALATAN -->
+    <div class="section">
+      <h3>BUTIR-BUTIR PERALATAN</h3>
+
+      <div class="row">
+        <div>
+          <label>Jenis Alat</label>
+          <input type="text" name="entry.1046236578">
+        </div>
+        <div>
+          <label>Model</label>
+          <input type="text" name="entry.152548466">
+        </div>
+        <div>
+          <label>No Siri</label>
+          <input type="text" name="entry.1239821023">
+        </div>
+      </div>
+
+      <label>Jenis Kerosakan</label>
+      <textarea name="entry.1707423016" rows="4"></textarea>
+    </div>
+
+    <!-- AKSESORI -->
+    <div class="section">
+      <h3>AKSESORI YANG DITERIMA</h3>
+      <input type="text" name="entry.1885358408">
+    </div>
+
+    <!-- DATE HIDDEN -->
+    <input type="hidden" name="entry.901421394_year" id="year">
+    <input type="hidden" name="entry.901421394_month" id="month">
+    <input type="hidden" name="entry.901421394_day" id="day">
+
+    <button type="submit">📤 HANTAR LAPORAN</button>
+  </form>
+</div>
+
+<script>
+var submitted = false;
+
+function setDate(){
+  const d = document.getElementById("tarikh").valueAsDate || new Date();
+  document.getElementById("year").value = d.getFullYear();
+  document.getElementById("month").value = d.getMonth() + 1;
+  document.getElementById("day").value = d.getDate();
+}
+
+document.querySelector('iframe').addEventListener('load', function () {
+  if (submitted) {
+    window.location.href = "thankyou.html";
+  }
+});
+</script>
+
+</body>
+</html>
